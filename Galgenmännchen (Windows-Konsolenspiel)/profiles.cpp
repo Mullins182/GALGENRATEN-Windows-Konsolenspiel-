@@ -19,7 +19,7 @@ void createProfile()
 	string			name;
 	string			sBuffer;
 	size_t			actProfile	= 0;
-	vector <string> profilesData{};																// IN ARBEIT !!!
+	vector <string> profilesData{};																
 
 	readProfile.open("profiles.dat");
 
