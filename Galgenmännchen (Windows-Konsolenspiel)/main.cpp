@@ -16,7 +16,7 @@
 using namespace std;
 
 
-int main()															// Galgenraten (Hangman) Konsolenspiel created by Mullins182
+int main()															// Galgenraten (Hangman) Konsolenspiel created by Mullins182 ...
 {	
 	ifstream read_ini, read_profiles;
 	ofstream write_ini, writeActiveProfile;
