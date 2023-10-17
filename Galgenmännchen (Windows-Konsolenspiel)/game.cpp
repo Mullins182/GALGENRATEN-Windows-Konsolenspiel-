@@ -108,7 +108,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 			}
 
 			cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t      BITTE WARTEN ...";
-			searchedWord = randomWordGenerating();								// Funktion zur zufÃ¤lligen Auswahl eines Wortes aus der Wortlistendatei
+			searchedWord = randomWordGenerating();								// Funktion zur zufälligen Auswahl eines Wortes aus der Wortlistendatei
 
 			for (size_t i = 0; i < searchedWord.size(); i++)
 			{
@@ -185,7 +185,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 				//cout << searchedWord << " : " << countdown;
 
-				foundChars = charCheck(searchedWord, charInput);										// Abgleich charInput mit Chars des gesuchten Wortes und RÃ¼ckgabe Vector <char> mit treffern
+				foundChars = charCheck(searchedWord, charInput);										// Abgleich charInput mit Chars des gesuchten Wortes und Rückgabe Vector <char> mit treffern
 
 				for (int n = 0; n < foundChars.size(); n++)
 				{
@@ -199,7 +199,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 					}
 				}
 
-				posWord = ((size_t)60 - searchedWord.size());											// Zentrierte Ausgabe der Eingabemaske fÃ¼r gesuchtes Wort !
+				posWord = ((size_t)60 - searchedWord.size());											// Zentrierte Ausgabe der Eingabemaske für gesuchtes Wort !
 
 				cout << setw(posWord);
 
@@ -258,7 +258,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 						Sleep(500);
 					}
 
-					readProfiles.open("profiles.dat");							// Code zum PrÃ¼fen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
+					readProfiles.open("profiles.dat");							// Code zum Prüfen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
 
 					if (!readProfiles)
 					{
@@ -328,7 +328,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 					Sleep(1000);
 
-					cout << "\n\t <<< DrÃ¼cke die [SPACE] Taste fÃ¼r eine neue Runde, oder [BACKSPACE <--] um zum HauptmenÃ¼ zurÃ¼ckzukehren >>>";
+					cout << "\n\t <<< Drücke die [SPACE] Taste für eine neue Runde, oder [BACKSPACE <--] um zum Hauptmenü zurückzukehren >>>";
 
 					while (input != " " && input != "\b")
 					{
@@ -345,7 +345,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 						cout << "\n\n\n\n\n\t";
 
-						cout << "Gib einen Buchstaben ein um zu spielen, oder drÃ¼cke [BACKSPACE <--] um zum HauptmenÃ¼ zurÃ¼ckzukehren";
+						cout << "Gib einen Buchstaben ein um zu spielen, oder drücke [BACKSPACE <--] um zum Hauptmenü zurückzukehren";
 
 						charInput = _getch();																// Eingabe gesuchter Buchstabe (charInput)
 
@@ -354,7 +354,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 							input = "\b";
 						}
 
-						if (charInput == 'Ã¤' || charInput == 'Ã¶' || charInput == 'Ã¼')						// Umwandlung von Umlauten in 'upper-case'
+						if (charInput == 'ä' || charInput == 'ö' || charInput == 'ü')						// Umwandlung von Umlauten in 'upper-case'
 						{
 							charInput += -32;
 						}
@@ -367,7 +367,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 							sndPlaySound("keyboard_oneTip_edit.wav", SND_FILENAME | SND_ASYNC);
 						}
 
-						charInput = toupper(charInput);														// Umwandlung von Char in GroÃŸbuchstaben
+						charInput = toupper(charInput);														// Umwandlung von Char in Großbuchstaben
 					}
 					else
 					{
@@ -411,7 +411,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 							Sleep(500);
 						}
 
-						readProfiles.open("profiles.dat");							// Code zum PrÃ¼fen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
+						readProfiles.open("profiles.dat");							// Code zum Prüfen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
 
 						if (!readProfiles)
 						{
@@ -475,11 +475,11 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 						cout << "\n\n\n\n\n\t";
 
-						cout << "\t\t     <<< DU HÃ„NGST AM GALGEN UND KANNST NICHT MEHR WEITER SPIELEN !!! >>>\n\n";
+						cout << "\t\t     <<< DU HÄNGST AM GALGEN UND KANNST NICHT MEHR WEITER SPIELEN !!! >>>\n\n";
 
 						Sleep(1000);
 
-						cout << "\t     DrÃ¼cke die [SPACE] Taste fÃ¼r eine neue Runde, oder [BACKSPACE <--] um zum HauptmenÃ¼ zurÃ¼ckzukehren";
+						cout << "\t     Drücke die [SPACE] Taste für eine neue Runde, oder [BACKSPACE <--] um zum Hauptmenü zurückzukehren";
 
 						while (input != " " && input != "\b")
 						{
