@@ -80,7 +80,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 		if (menu_music == true)
 		{
-			sndPlaySound("background_music.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);							// Hintergrundmusik
+			sndPlaySound("Honolulu.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);									// Hintergrundmusik
 		}
 		else
 		{
