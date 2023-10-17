@@ -123,7 +123,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 				//textColor("bblack");
 
-				cout << gameVersion << "\t\t" << "Aktives Profil: " << activeProfileName << " || Gewonnene Runden: " << won << " | Verloren: " << lost << "\n";
+				cout << gameVersion << "\t\t" << "Aktives Profil: " << activeProfileName << " | Gewonnene Runden: " << won << " | Verloren: " << lost << "\n";
 
 				if (searchedWord.find(charInput) != string::npos)
 				{
