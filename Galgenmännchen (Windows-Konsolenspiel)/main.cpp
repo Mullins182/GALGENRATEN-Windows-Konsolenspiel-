@@ -16,7 +16,7 @@
 using namespace std;
 
 
-int main()															// Galgenraten (Hangman) Konsolenspiel created by Mullins182
+int main()															// Galgenraten (Hangman) Konsolenspiel created by Mullins182 ...
 {	
 	ifstream read_ini, read_profiles;
 	ofstream write_ini, writeActiveProfile;
@@ -80,11 +80,11 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 		if (menu_music == true)
 		{
-			sndPlaySound("background_music.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);							// Hintergrundmusik
+			sndPlaySound("Honolulu.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);									// Hintergrundmusik
 		}
 		else
 		{
-			sndPlaySound("silence.wav", SND_FILENAME | SND_NODEFAULT);											// Musikunterbrecher
+			sndPlaySound(NULL, SND_FILENAME | SND_ASYNC);														// Musikunterbrecher
 		}
 		
 		if (colors == 1)

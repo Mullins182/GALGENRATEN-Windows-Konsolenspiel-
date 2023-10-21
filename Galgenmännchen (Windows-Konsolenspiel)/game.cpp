@@ -66,7 +66,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 		}		
 
 
-			if (colors == 1)																				// Farbgebung !
+			if (colors == 1)												// Farbgebung !
 			{
 				bg_color = "black";
 				txt_color = "bwhite";
@@ -108,7 +108,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 			}
 
 			cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t      BITTE WARTEN ...";
-			searchedWord = randomWordGenerating();										// Funktion zur zufälligen Auswahl eines Wortes aus der Datenbank
+			searchedWord = randomWordGenerating();								// Funktion zur zufälligen Auswahl eines Wortes aus der Wortlistendatei
 
 			for (size_t i = 0; i < searchedWord.size(); i++)
 			{
@@ -123,7 +123,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 				//textColor("bblack");
 
-				cout << gameVersion << "\t\t" << "Aktives Profil: " << activeProfileName << " || Gewonnene Runden: " << won << " | Verloren: " << lost << "\n";
+				cout << gameVersion << "\t\t" << "Aktives Profil: " << activeProfileName << " | Gewonnene Runden: " << won << " | Verloren: " << lost << "\n";
 
 				if (searchedWord.find(charInput) != string::npos)
 				{

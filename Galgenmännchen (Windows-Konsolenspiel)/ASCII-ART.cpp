@@ -34,7 +34,7 @@ void hangman_art()
 		cout << "| |       // |   | \\\\       \n";
 		cout << "| |      //  | . |  \\\\      \t\t\t       [H] HIGHSCORE\n";
 		cout << "| |     ')   |   |   (`	   \n";
-		cout << "| |          ||'||		       [P] PROFILE VERWALTEN [O] OPTIONEN [Q] BEENDEN\n";
+		cout << "| |          ||'||		      [P] PROFILE VERWALTEN [O] OPTIONEN [Q] BEENDEN\n";
 		cout << "| |          || ||            \n";
 		cout << "| |          || ||            \n";
 		cout << "| |          || ||            \n";
