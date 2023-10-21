@@ -35,6 +35,14 @@ void createProfile()
 			profilesData.push_back(sBuffer);
 		}
 		readProfile.close();
+
+		if (profilesData.size() > 26)
+		{
+			cout << "\n\n\n\n\n\t\t\t\tDIE MAXIMALE ANZAHL AN PROFILEN IST ERREICHT ... \n\n\t\t\t\tLÖSCHE ZUNÄCHST EIN ODER MEHRERE PROFILE, BEVOR DU NEUE PROFILE ANLEGST";
+			Sleep(7300);
+
+			return;
+		}
 	}
 
 	system("cls");
@@ -47,7 +55,7 @@ void createProfile()
 		
 		system("cls");
 
-		cout << "GIB EINEN PROFILNAMEN EIN : ";
+		cout << "\n\n\n\n\n\n\n\n\n\n\tGIB EINEN PROFILNAMEN EIN : ";
 
 		getline(cin, name);
 
@@ -108,69 +116,81 @@ void changeProfile()
 	vector <string> profiles{};
 	size_t select = 0;
 	size_t getString = 0;
-
-	system("cls");
-
-	cout << "\n\n\t\t\t\t   WÄHLE DAS PROFIL WELCHES AKTIVIERT WERDEN SOLL ...\n\n\n";
-
-	readProfiles.open("profiles.dat");
-
-	if (!readProfiles)
+	bool success = false;
+		
+	while (success != true)
 	{
-		cout << "\tKANN profiles.dat NICHT ÖFFNEN !!!";
-	}
-	else
-	{
-		string readBuffer;
+		system("cls");
 
-		for (size_t i = 0; !readProfiles.eof(); i++)
+		cout << "\n\n\t\t\t\t   WÄHLE DAS PROFIL WELCHES AKTIVIERT WERDEN SOLL ...\n\n\n";
+
+		readProfiles.open("profiles.dat");
+
+		if (!readProfiles)
 		{
-			readProfiles >> readBuffer;
+			cout << "\t\t\t\t\t  KANN profiles.dat NICHT ÖFFNEN !!!";
 
-			if (getString == i)
-			{
-				profiles.push_back(readBuffer);
-				getString = (i + 3);
-			}
-		}
+			Sleep(4000);
 
-		readProfiles.close();
-
-		for (size_t i = 0; i < profiles.size(); i++)							// Ausgabe der verfügbaren Profile !
-		{
-			cout << "\t\t\t\t\t\t[" << (i + 1) << "] " << profiles[i] << "\n";
-		}
-
-		select = _getch();
-
-		if (select < 49 || select > profiles.size() + 48)
-		{
-			cout << "\n\n\n\tDU HAST KEINEN GÜLTIGEN EINTRAG GEWÄHLT ...";
-		}
-		else if (select == 49)
-		{
-			select -= 49;
-
-			writeActiveProfile.open("activeProfile.ini");
-			writeActiveProfile << select;
-			writeActiveProfile.close();
-
-			cout << "\n\n\n\n\t\t\t\t\t        AKTIVES PROFIL GEÄNDERT";
+			return;
 		}
 		else
 		{
-			
-			
-			select = ((select - 49) * 3);
+			string readBuffer;
 
-			writeActiveProfile.open("activeProfile.ini");
-			writeActiveProfile << select;
-			writeActiveProfile.close();
+			for (size_t i = 0; !readProfiles.eof(); i++)
+			{
+				readProfiles >> readBuffer;
 
-			cout << "\n\n\n\n\t\t\t\t\t        AKTIVES PROFIL GEÄNDERT";
+				if (getString == i)
+				{
+					profiles.push_back(readBuffer);
+					getString = (i + 3);
+				}
+			}
+
+			readProfiles.close();
+
+			for (size_t i = 0; i < profiles.size(); i++)							// Ausgabe der verfügbaren Profile !
+			{
+				cout << "\t\t\t\t\t\t[" << (i + 1) << "] " << profiles[i] << "\n";
+			}
+
+			select = _getch();
+
+			if (select < 49 || select > profiles.size() + 48)
+			{
+				cout << "\n\n\n\tDU HAST KEIN GÜLTIGES PROFIL GEWÄHLT ...";
+
+				Sleep(1550);
+			}
+			else if (select == 49)
+			{
+				select -= 49;
+
+				writeActiveProfile.open("activeProfile.ini");
+				writeActiveProfile << select;
+				writeActiveProfile.close();
+
+				cout << "\n\n\n\n\t\t\t\t\t     AKTIVES PROFIL GEÄNDERT";
+
+				success = true;
+			}
+			else
+			{
+				select = ((select - 49) * 3);
+
+				writeActiveProfile.open("activeProfile.ini");
+				writeActiveProfile << select;
+				writeActiveProfile.close();
+
+				cout << "\n\n\n\n\t\t\t\t\t     AKTIVES PROFIL GEÄNDERT";
+
+				success = true;
+			}
+
+			Sleep(3300);
 		}
-
-		Sleep(3300);
 	}
 }
 
@@ -184,8 +204,12 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 	vector <string> profilesData{};
 	vector <string> profileSelectData{};
 	string buffer;
-	size_t getString = 0;;
-	string choice;
+	string authorize;
+	size_t getString = 0;
+	size_t delVlinesBegin = 0;
+	size_t delVlinesEnd = 0;
+	size_t choice = 0;
+
 
 	readProfilesData.open("profiles.dat");
 
@@ -220,9 +244,204 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 
 		choice = _getch();
 
-		
+		if ((choice - 49) > profileSelectData.size() - 1)
+		{
+			cout << "\n\n\n\t\t\t\t\tFALSCHE EINGABE ...";
 
+			Sleep(3300);
 
+			return;
+		}
+		else
+		{
+			cout << "\n\n\tPROFIL " << profileSelectData[choice - 49] << " WIRKLICH LÖSCHEN ?   [j] | [n]";
+
+			set_cursor(true);
+
+			authorize = _getch();
+
+			set_cursor(false);
+
+			if (authorize == "j")
+			{
+				if (profilesData.size() < 4)
+				{
+					remove("profiles.dat");									// Anweisung zum löschen einer bestimmten Datei !!!
+					remove("activeProfile.ini");
+
+					Sleep(650);
+
+					readProfilesData.open("profiles.dat");
+
+					if (!readProfilesData)
+					{
+						system("cls");
+
+						cout << "\n\n\n\n\n\t\t\t\t\t   ";
+						cout << "P ";
+						Sleep(50);
+						cout << "R ";
+						Sleep(50);
+						cout << "O ";
+						Sleep(50);
+						cout << "F ";
+						Sleep(50);
+						cout << "I ";
+						Sleep(50);
+						cout << "L ";
+						Sleep(50);
+						cout << "  ";
+						Sleep(50);
+						cout << "G ";
+						Sleep(50);
+						cout << "E ";
+						Sleep(50);
+						cout << "L ";
+						Sleep(50);
+						cout << "Ö ";
+						Sleep(50);
+						cout << "S ";
+						Sleep(50);
+						cout << "C ";
+						Sleep(50);
+						cout << "H ";
+						Sleep(50);
+						cout << "T ";
+						Sleep(50);
+						cout << "  ";
+						Sleep(50);
+						cout << "! ";
+						Sleep(3300);
+					}
+					else
+					{
+						cout << "\n\n\n\tFEHLER BEIM LÖSCHEN DER PROFILDATEI !";
+						Sleep(3300);
+
+						return;
+					}
+
+					readProfilesData.close();
+				}
+				else
+				{
+					if (choice == 49)
+					{
+						delVlinesBegin = (choice - 49);
+					}
+					else if (choice == 50)
+					{
+						delVlinesBegin = (choice - 49) + 2;
+					}
+					else if (choice == 51)
+					{
+						delVlinesBegin = (choice - 49) + 4;
+					}
+					else if (choice == 52)
+					{
+						delVlinesBegin = (choice - 49) + 6;
+					}
+					else if (choice == 53)
+					{
+						delVlinesBegin = (choice - 49) + 8;
+					}
+					else if (choice == 54)
+					{
+						delVlinesBegin = (choice - 49) + 10;
+					}
+					else if (choice == 55)
+					{
+						delVlinesBegin = (choice - 49) + 12;
+					}
+					else if (choice == 56)
+					{
+						delVlinesBegin = (choice - 49) + 14;
+					}
+					else if (choice == 57)
+					{
+						delVlinesBegin = (choice - 49) + 16;
+					}
+
+					Sleep(1000);
+
+					remove("profiles.dat");									// Anweisung zum löschen einer bestimmten Datei !!!
+
+					Sleep(350);
+
+					readProfilesData.open("profiles.dat");
+
+					if (!readProfilesData)
+					{
+						system("cls");
+
+						cout << "\n\n\n\n\n\t\t\t\t\t   ";
+						cout << "P ";
+						Sleep(50);
+						cout << "R ";
+						Sleep(50);
+						cout << "O ";
+						Sleep(50);
+						cout << "F ";
+						Sleep(50);
+						cout << "I ";
+						Sleep(50);
+						cout << "L ";
+						Sleep(50);
+						cout << "  ";
+						Sleep(50);
+						cout << "G ";
+						Sleep(50);
+						cout << "E ";
+						Sleep(50);
+						cout << "L ";
+						Sleep(50);
+						cout << "Ö ";
+						Sleep(50);
+						cout << "S ";
+						Sleep(50);
+						cout << "C ";
+						Sleep(50);
+						cout << "H ";
+						Sleep(50);
+						cout << "T ";
+						Sleep(50);
+						cout << "  ";
+						Sleep(50);
+						cout << "! ";
+						Sleep(3300);
+					}
+					else
+					{
+						cout << "\n\n\n\tFEHLER BEIM LÖSCHEN UND NEUERSTELLEN DER PROFILDATEI !";
+						Sleep(3300);
+						return;
+					}
+
+					readProfilesData.close();
+
+					profilesData.erase(next(profilesData.begin(), delVlinesBegin), next(profilesData.begin(), (delVlinesBegin + 3)));
+
+					Sleep(500);
+
+					writeProfilesData.open("profiles.dat");
+
+					for (int i = 0; i < profilesData.size(); i++)
+					{
+						writeProfilesData << "\n" << profilesData[i];
+					}
+
+					writeProfilesData.close();
+
+					changeProfile();
+				}
+
+			}
+			else
+			{
+				cout << "\n\n\n\n\n\t\t\t\t\tABBRUCH UND ZURÜCK ZUM MENÜ ...\n\n";
+				Sleep(3300);
+			}
+		}
 	}
 
 	//ifstream	check, getProfileName;
@@ -293,7 +512,7 @@ void profileManagement()
 
 		cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t[N] NEUES PROFIL ANLEGEN\n\n";
 		cout << "\t\t\t\t\t[W] AKTUELLES PROFIL WECHSELN\n\n";
-		cout << "\t\t\t\t\t[L] AKTUELLES PROFIL LÖSCHEN\n\n\n";
+		cout << "\t\t\t\t\t[L] EIN PROFIL LÖSCHEN\n\n\n";
 		cout << "\t\t\t\t\t[BACKSPACE <--] ZURÜCK ZUM HAUPTMENÜ";
 
 		input = _getch();

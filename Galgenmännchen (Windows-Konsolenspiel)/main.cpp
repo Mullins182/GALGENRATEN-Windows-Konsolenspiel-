@@ -84,7 +84,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 		}
 		else
 		{
-			sndPlaySound("silence.wav", SND_FILENAME | SND_NODEFAULT);											// Musikunterbrecher
+			sndPlaySound(NULL, SND_FILENAME | SND_ASYNC);														// Musikunterbrecher
 		}
 		
 		if (colors == 1)

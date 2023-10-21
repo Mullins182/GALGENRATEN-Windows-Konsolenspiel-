@@ -19,6 +19,7 @@ void highscore(size_t profile)
 	vector <string> profileData{};
 	string buffer;
 	string choice;
+	int getString = 0;
 
 	readProfiles.open("profiles.dat");
 
@@ -26,7 +27,7 @@ void highscore(size_t profile)
 	{
 		system("cls");
 
-		cout << "\n\n\n\n\n\n\n\n\t\t\tFEHLER ... KANN KEIN AKTUELLES PROFIL FINDEN ... BITTE ERSTELLE ERST EIN PROFIL !";
+		cout << "\n\n\n\n\n\n\n\n\t\tFEHLER ... KANN KEIN AKTUELLES PROFIL FINDEN ... BITTE ERSTELLE ERST EIN PROFIL !";
 		Sleep(5500);
 	}
 	else
@@ -43,11 +44,22 @@ void highscore(size_t profile)
 		
 		system("cls");
 
-		cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t      H I G H S C O R E";
-		cout << "\n\n\n";
-		cout << "\t\t\tHALLO " << profileData[profile] << "." << " DU hast bisher insgesamt " << profileData[profile + 1] << " mal gewonnen und " << profileData[profile + 2] << " mal verloren !";
-		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-		cout << "DRÜCKE [BACKSPACE <--] UM ZUM HAUPTMENÜ ZURÜCKZUKEHREN";
+		cout << setfill('°') << setw(121) << "°\n";
+		cout << "\t\t\t\t\t\t   H I G H S C O R E\n";
+		//cout << setfill('°') << setw(121) << "°\n";
+		
+		for (size_t i = 0; i < profileData.size(); i++)
+		{			
+			if (getString == i)
+			{
+				cout << setfill('_') << setw(121) << "_\n";
+				cout << "\t" << profileData[i] << ": \n";
+				cout << "\t\t\t\t    [" << profileData[i + 1] << "] Runden gewonnen UND [" << profileData[i + 2] << "] Runden verloren !\n" << flush;
+				getString = (i + 3);
+			}			
+		}
+
+		cout << setfill(' ') << "\t\t\t\t\t\t\t\t\t\t\t\t  DRÜCKE [BACKSPACE <--]";
 
 		while (choice != "\b")
 		{
