@@ -15,7 +15,7 @@ int random(int low, int high)
 
 
     // seed rng first:
-    rng_type::result_type const seedval = time(NULL); // get this from somewhere
+    rng_type::result_type const seedval = time(0); // get this from somewhere
     rng.seed(seedval);
 
     rng_type::result_type random_number = udist(rng);
