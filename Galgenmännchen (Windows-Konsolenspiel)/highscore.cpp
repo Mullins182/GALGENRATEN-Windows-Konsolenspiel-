@@ -44,17 +44,17 @@ void highscore(size_t profile)
 		
 		system("cls");
 
-		cout << setfill('°') << setw(121) << "°\n";
-		cout << "\t\t\t\t\t\t   H I G H S C O R E\n";
 		//cout << setfill('°') << setw(121) << "°\n";
+		cout << "\t\t\t\t\t\t   H I G H S C O R E\n";
+		cout << setfill('°') << setw(121) << "°\n";
 		
 		for (size_t i = 0; i < profileData.size(); i++)
 		{			
 			if (getString == i)
 			{
-				cout << setfill('_') << setw(121) << "_\n";
 				cout << "\t" << profileData[i] << ": \n";
 				cout << "\t\t\t\t    [" << profileData[i + 1] << "] Runden gewonnen UND [" << profileData[i + 2] << "] Runden verloren !\n" << flush;
+				cout << setfill('_') << setw(121) << "_\n";
 				getString = (i + 3);
 			}			
 		}

@@ -107,7 +107,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 				textColor("byellow");
 			}
 
-			cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t      BITTE WARTEN ...";
+			cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t    BITTE WARTEN ...";
 			searchedWord = randomWordGenerating();								// Funktion zur zufälligen Auswahl eines Wortes aus der Wortlistendatei
 
 			for (size_t i = 0; i < searchedWord.size(); i++)
