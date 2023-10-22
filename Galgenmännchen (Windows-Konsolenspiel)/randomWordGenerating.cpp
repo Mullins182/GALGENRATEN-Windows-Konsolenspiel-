@@ -13,11 +13,11 @@ string randomWordGenerating()													// Funktion zur zufälligen Auswahl ein
 	unsigned int loops = 0;
 	string word;
 	
-	loops = random(1, 51);
+	loops = random(11, 59);
 
 	for (int i = loops; i > 0; i--)
 	{
-		choice = random(1, 362);
+		choice = random(1, 444);
 		Sleep(50);
 	}
 	
