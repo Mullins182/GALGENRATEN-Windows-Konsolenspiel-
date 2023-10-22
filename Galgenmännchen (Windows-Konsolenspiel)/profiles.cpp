@@ -90,11 +90,11 @@ void createProfile()
 
 			if (!readProfile)
 			{
-				cout << "\n\n\n" << "FEHLER BEIM ERSTELLEN DES PROFILS !";
+				cout << "\n\n\n" << "\tFEHLER BEIM ERSTELLEN DES PROFILS !";
 			}
 			else
 			{
-				cout << "\n\n\n" << "PROFIL ERFOLGREICH ERSTELLT !";
+				cout << "\n\n\n" << "\tPROFIL ERFOLGREICH ERSTELLT !";
 			}
 
 			readProfile.close();

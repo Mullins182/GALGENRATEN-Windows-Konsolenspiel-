@@ -11,7 +11,7 @@
 #include<time.h>
 #include<fstream>
 #include"functions.h"
-#pragma comment(lib, "Winmm.lib")
+#pragma comment(lib, "Winmm.lib")																				
 
 using namespace std;
 
@@ -27,7 +27,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	bool snd_keys = true;
 	bool snd_winLoose = true;
 	bool menu_music = true;
-	string gameVersion = "Version 3.3";
+	string gameVersion = "Version 3.4";
 	size_t activeProfile = 0;
 	string activeProfileName;
 	string readBuffer;
