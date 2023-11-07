@@ -21,7 +21,7 @@ void highscore(size_t profile)
 	string choice;
 	int getString = 0;
 
-	readProfiles.open("profiles.dat");
+	readProfiles.open("Data/profiles.dat");
 
 	if (!readProfiles)
 	{

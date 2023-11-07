@@ -13,7 +13,7 @@ using namespace std;
 
 void hangman(string gameVersion, int colors, bool effects, bool snd_effects, bool snd_keys, bool snd_winLoose, size_t activeProfile)
 {
-	sndPlaySound("silence.wav", SND_FILENAME | SND_NODEFAULT);
+	sndPlaySound("Data/Audio/SndEffects/silence.wav", SND_FILENAME | SND_NODEFAULT);
 
 	set_cursor(false);
 
@@ -43,7 +43,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 			
 
-		readProfiles.open("profiles.dat");
+		readProfiles.open("Data/profiles.dat");
 
 		if (!readProfiles)
 		{
@@ -60,7 +60,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 			readProfiles.close();
 
 			activeProfileName = profiles[activeProfile];
-			profileWon = stoi(profiles[activeProfile + 1]);
+			profileWon	= stoi(profiles[activeProfile + 1]);
 			profileLost = stoi(profiles[activeProfile + 2]);
 
 		}		
@@ -125,7 +125,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 				cout << gameVersion << "\t\t" << "Aktives Profil: " << activeProfileName << " | Gewonnene Runden: " << won << " | Verloren: " << lost << "\n";
 
-				if (searchedWord.find(charInput) != string::npos)
+				if (searchedWord.find(charInput) != string::npos)				// Char in String finden. Wenn find CharInput nicht npos, wurde der Char im String gefunden !
 				{
 					countdown = countdown;
 				}
@@ -227,7 +227,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 					{
 						if (snd_winLoose == true)
 						{
-							sndPlaySound("win.wav", SND_FILENAME | SND_ASYNC);
+							sndPlaySound("Data/Audio/SndEffects/win.wav", SND_FILENAME | SND_ASYNC);
 						}
 
 						for (int n = 2; n > 0; n--)
@@ -258,7 +258,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 						Sleep(500);
 					}
 
-					readProfiles.open("profiles.dat");							// Code zum Prüfen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
+					readProfiles.open("Data/profiles.dat");							// Code zum Prüfen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
 
 					if (!readProfiles)
 					{
@@ -276,7 +276,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 							}
 						}
 
-						writeToProfile.open("profiles.dat");
+						writeToProfile.open("Data/profiles.dat");
 
 						for (size_t i = 0; i < profiles.size(); i++)
 						{
@@ -298,7 +298,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 					if (snd_winLoose == true)
 					{
-						sndPlaySound("triumph.wav", SND_FILENAME | SND_ASYNC);
+						sndPlaySound("Data/Audio/SndEffects/triumph.wav", SND_FILENAME | SND_ASYNC);
 					}
 
 					winner_art();																		// ASCI-Art ausgabe des gewinner ASCI-Art !
@@ -364,7 +364,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 						//or
 						if (snd_keys == true)
 						{
-							sndPlaySound("keyboard_oneTip_edit.wav", SND_FILENAME | SND_ASYNC);
+							sndPlaySound("Data/Audio/SndEffects/keyboard_oneTip_edit.wav", SND_FILENAME | SND_ASYNC);
 						}
 
 						charInput = toupper(charInput);														// Umwandlung von Char in Großbuchstaben
@@ -380,7 +380,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 						{
 							if (snd_winLoose == true)
 							{
-								sndPlaySound("lost.wav", SND_FILENAME | SND_ASYNC);
+								sndPlaySound("Data/Audio/SndEffects/lost.wav", SND_FILENAME | SND_ASYNC);
 							}
 
 							for (int n = 2; n > 0; n--)
@@ -411,7 +411,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 							Sleep(500);
 						}
 
-						readProfiles.open("profiles.dat");							// Code zum Prüfen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
+						readProfiles.open("Data/profiles.dat");							// Code zum Prüfen ob Profildatei vorhanden und ggf. schreiben der win/lost Daten in Profildatei !
 
 						if (!readProfiles)
 						{
@@ -429,7 +429,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 								}
 							}
 
-							writeToProfile.open("profiles.dat");
+							writeToProfile.open("Data/profiles.dat");
 
 							for (size_t i = 0; i < profiles.size(); i++)
 							{
@@ -451,7 +451,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 						if (snd_winLoose == true)
 						{
-							sndPlaySound("death_drums.wav", SND_FILENAME | SND_ASYNC);
+							sndPlaySound("Data/Audio/SndEffects/death_drums.wav", SND_FILENAME | SND_ASYNC);
 						}
 
 						hangman_build_11();																// ASCI-Art ausgabe des verlierer ASCI-Art !
