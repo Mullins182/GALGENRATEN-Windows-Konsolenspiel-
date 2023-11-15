@@ -11,7 +11,7 @@
 #include<time.h>
 #include<fstream>
 #include"functions.h"
-#pragma comment(lib, "Winmm.lib")																				
+#pragma comment(lib, "Winmm.lib")																				// Für Soundwiedergabe erforderlich !																			
 
 using namespace std;
 
@@ -27,10 +27,12 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	bool snd_keys = true;
 	bool snd_winLoose = true;
 	bool menu_music = true;
-	string gameVersion = "Version 3.7";
+	bool musicPlaying = false;
+	string gameVersion = "Version 3.8";
 	size_t activeProfile = 0;
 	string activeProfileName;
 	string readBuffer;
+	string music_set;
 	vector <string> profiles{};
 	char choose = 'x';
 	
@@ -75,16 +77,40 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 		read_ini >> colors >> effects >> snd_effects >> snd_menu >> snd_keys >> snd_winLoose >> menu_music;
 		read_ini.close();
+
+		Sleep(666);
 				
 		set_cursor(false);																						// Maus-Cursor verstecken
 
 		if (menu_music == true)
-		{
-			sndPlaySound("Data/Audio/Music/Honolulu.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);					// Hintergrundmusik
+		{			
+			if (!musicPlaying)
+			{
+				read_ini.open("Data/music.ini");
+
+				if (!read_ini)
+				{
+					read_ini.close();
+					write_ini.open("Data/music.ini");
+					write_ini << "Data/Audio/Music/Honolulu.wav";
+					write_ini.close();
+					read_ini.open("Data/music.ini");
+					read_ini >> music_set;
+					musicPlaying = sndPlaySound(music_set.c_str(), SND_FILENAME | SND_ASYNC | SND_LOOP);							// Hintergrundmusik
+				}
+				else
+				{
+					read_ini >> music_set;
+					musicPlaying = sndPlaySound(music_set.c_str(), SND_FILENAME | SND_ASYNC | SND_LOOP);			// Hintergrundmusik
+				}
+
+				read_ini.close();
+			}			
 		}
 		else
 		{
-			sndPlaySound(NULL, SND_FILENAME | SND_ASYNC);														// Musikunterbrecher
+			sndPlaySound(NULL, SND_FILENAME | SND_ASYNC);											// Musikunterbrecher
+			musicPlaying = false;
 		}
 		
 		if (colors == 1)
@@ -198,6 +224,8 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 				Sleep(1800);
 
+				musicPlaying = false;
+
 				hangman(gameVersion, colors, effects, snd_effects, snd_keys, snd_winLoose, activeProfile);
 			}
 	
@@ -209,6 +237,8 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 			{
 				sndPlaySound("Data/Audio/SndEffects/menu_option.wav", SND_FILENAME | SND_ASYNC);
 			}
+
+			musicPlaying = false;
 
 				options();
 
