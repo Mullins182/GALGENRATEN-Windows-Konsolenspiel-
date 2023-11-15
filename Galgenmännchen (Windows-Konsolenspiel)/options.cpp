@@ -32,7 +32,7 @@ void options()
 	{
 		//sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
 
-		read_ini.open("options.ini");
+		read_ini.open("Data/options.ini");
 		read_ini >> opt_bg >> vis_effects >> snd_effects >> snd_mChoice >> snd_keyTap >> snd_winOrLoose >> menu_music;
 		read_ini.close();
 		system("cls");
@@ -112,7 +112,7 @@ void options()
 			
 			if (snd_mChoice == true)
 			{
-				sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 			if (opt_bg == 1)
@@ -162,7 +162,7 @@ void options()
 
 			if (snd_mChoice == true)
 			{
-				sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 			if (vis_effects == true)
@@ -182,7 +182,7 @@ void options()
 
 			if (snd_mChoice == true)
 			{
-				sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 			if (snd_effects == true)
@@ -210,7 +210,7 @@ void options()
 			{
 				if (snd_mChoice == true)
 				{
-					sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+					sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 
 					snd_mChoice = false;
 					write_ini_file(opt_bg, vis_effects, snd_effects, snd_mChoice, snd_keyTap, snd_winOrLoose, menu_music);
@@ -230,7 +230,7 @@ void options()
 			{
 				if (snd_mChoice == true)
 				{
-					sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+					sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 				}
 
 				if (snd_keyTap == true)
@@ -253,7 +253,7 @@ void options()
 			{
 				if (snd_mChoice == true)
 				{
-					sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+					sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 				}
 
 				if (snd_winOrLoose == true)
@@ -274,7 +274,7 @@ void options()
 
 			if (snd_mChoice == true)
 			{
-				sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 			if (menu_music == true)
@@ -294,7 +294,7 @@ void options()
 
 			if (snd_mChoice == true)
 			{
-				sndPlaySound("opt_select.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/opt_select.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 			cout << "\n\n\t\t\t\t\t  Zurück zum Hauptmenu ...";

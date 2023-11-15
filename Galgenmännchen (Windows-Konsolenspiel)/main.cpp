@@ -27,7 +27,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	bool snd_keys = true;
 	bool snd_winLoose = true;
 	bool menu_music = true;
-	string gameVersion = "Version 3.5";
+	string gameVersion = "Version 3.7";
 	size_t activeProfile = 0;
 	string activeProfileName;
 	string readBuffer;
@@ -45,7 +45,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	{
 		// Build new console title string.
 
-		StringCchPrintf(szNewTitle, MAX_PATH, TEXT("H A N G M A N"), szOldTitle);
+		StringCchPrintf(szNewTitle, MAX_PATH, TEXT("H A N G M A N"));
 
 		// Set console title to new title
 		if (!SetConsoleTitle(szNewTitle))
@@ -63,14 +63,14 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	{
 		profiles.clear();
 		
-		read_ini.open("options.ini");
+		read_ini.open("Data/options.ini");
 		
 		if (!read_ini)																							
 		{
-			write_ini.open("options.ini");
+			write_ini.open("Data/options.ini");
 			write_ini << '4' << '\n' << 1 << '\n' << 1 << '\n' << 1 << '\n' << 1 << '\n' << 1 << '\n' << 1;		// Standard Initialisierung der Optionen
 			write_ini.close();
-			read_ini.open("options.ini");
+			read_ini.open("Data/options.ini");
 		}
 
 		read_ini >> colors >> effects >> snd_effects >> snd_menu >> snd_keys >> snd_winLoose >> menu_music;
@@ -80,7 +80,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 		if (menu_music == true)
 		{
-			sndPlaySound("Honolulu.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);									// Hintergrundmusik
+			sndPlaySound("Data/Audio/Music/Honolulu.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);					// Hintergrundmusik
 		}
 		else
 		{
@@ -118,7 +118,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 			textColor("byellow");
 		}
 
-		read_profiles.open("profiles.dat");
+		read_profiles.open("Data/profiles.dat");
 
 		if (!read_profiles)
 		{
@@ -133,11 +133,11 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 			}
 
 			read_profiles.close();
-			read_ini.open("activeProfile.ini");															// Profil-Initialisierung
+			read_ini.open("Data/activeProfile.ini");															// Profil-Initialisierung
 
 			if (!read_ini)
 			{
-				writeActiveProfile.open("activeProfile.ini");
+				writeActiveProfile.open("Data/activeProfile.ini");
 				writeActiveProfile << "0";
 				writeActiveProfile.close();
 
@@ -177,7 +177,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 		
 		case ' ':
 
-			read_profiles.open("profiles.dat");
+			read_profiles.open("Data/profiles.dat");
 
 			if (!read_profiles)
 			{
@@ -191,7 +191,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 				if (snd_menu == true)
 				{
-					sndPlaySound("menu_option.wav", SND_FILENAME | SND_ASYNC);
+					sndPlaySound("Data/Audio/SndEffects/menu_option.wav", SND_FILENAME | SND_ASYNC);
 				}
 
 
@@ -207,7 +207,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 			if (snd_menu == true)
 			{
-				sndPlaySound("menu_option.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/menu_option.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 				options();
@@ -218,7 +218,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 			if (snd_menu == true)
 			{
-				sndPlaySound("menu_option.wav", SND_FILENAME | SND_ASYNC);
+				sndPlaySound("Data/Audio/SndEffects/menu_option.wav", SND_FILENAME | SND_ASYNC);
 			}
 
 			cout << "\t\t\t\t\t\t" << "Spiel wird beendet";

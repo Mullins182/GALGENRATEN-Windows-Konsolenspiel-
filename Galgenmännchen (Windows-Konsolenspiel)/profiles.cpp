@@ -21,7 +21,7 @@ void createProfile()
 	size_t			actProfile	= 0;
 	vector <string> profilesData{};																
 
-	readProfile.open("profiles.dat");
+	readProfile.open("Data/profiles.dat");
 
 	if (!readProfile)
 	{
@@ -38,7 +38,7 @@ void createProfile()
 
 		if (profilesData.size() > 26)
 		{
-			cout << "\n\n\n\n\n\t\t\t\tDIE MAXIMALE ANZAHL AN PROFILEN IST ERREICHT ... \n\n\t\t\t\tLÖSCHE ZUNÄCHST EIN ODER MEHRERE PROFILE, BEVOR DU NEUE PROFILE ANLEGST";
+			cout << "\n\n\n\n\n\t\t\t\tDIE MAXIMALE ANZAHL AN PROFILEN IST ERREICHT ... \n\n\t\t\t\tLÖSCHE ZUNÄCHST EIN ODER MEHRERE PROFILE BEVOR DU NEUE PROFILE ANLEGST";
 			Sleep(7300);
 
 			return;
@@ -74,7 +74,7 @@ void createProfile()
 			profilesData.push_back("0");
 			profilesData.push_back("0");
 						
-			writeProfile.open("profiles.dat");
+			writeProfile.open("Data/profiles.dat");
 			
 			for (size_t i = 0; i < profilesData.size(); i++)
 			{
@@ -84,7 +84,7 @@ void createProfile()
 			
 			writeProfile.close();
 
-			readProfile.open("profiles.dat");
+			readProfile.open("Data/profiles.dat");
 
 			set_cursor(false);
 
@@ -99,7 +99,7 @@ void createProfile()
 
 			readProfile.close();
 
-			writeActiveProfile.open("activeProfile.ini");
+			writeActiveProfile.open("Data/activeProfile.ini");
 			writeActiveProfile << actProfile;
 			writeActiveProfile.close();
 
@@ -124,7 +124,7 @@ void changeProfile()
 
 		cout << "\n\n\t\t\t\t   WÄHLE DAS PROFIL WELCHES AKTIVIERT WERDEN SOLL ...\n\n\n";
 
-		readProfiles.open("profiles.dat");
+		readProfiles.open("Data/profiles.dat");
 
 		if (!readProfiles)
 		{
@@ -168,7 +168,7 @@ void changeProfile()
 			{
 				select -= 49;
 
-				writeActiveProfile.open("activeProfile.ini");
+				writeActiveProfile.open("Data/activeProfile.ini");
 				writeActiveProfile << select;
 				writeActiveProfile.close();
 
@@ -180,7 +180,7 @@ void changeProfile()
 			{
 				select = ((select - 49) * 3);
 
-				writeActiveProfile.open("activeProfile.ini");
+				writeActiveProfile.open("Data/activeProfile.ini");
 				writeActiveProfile << select;
 				writeActiveProfile.close();
 
@@ -211,7 +211,7 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 	size_t choice = 0;
 
 
-	readProfilesData.open("profiles.dat");
+	readProfilesData.open("Data/profiles.dat");
 
 	if (!readProfilesData)
 	{
@@ -246,7 +246,7 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 
 		if ((choice - 49) > profileSelectData.size() - 1)
 		{
-			cout << "\n\n\n\t\t\t\t\tFALSCHE EINGABE ...";
+			cout << "\n\n\n\t\t\t\t\t\t  FALSCHE EINGABE ...";
 
 			Sleep(3300);
 
@@ -266,12 +266,12 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 			{
 				if (profilesData.size() < 4)
 				{
-					remove("profiles.dat");									// Anweisung zum löschen einer bestimmten Datei !!!
-					remove("activeProfile.ini");
+					remove("Data/profiles.dat");									// Anweisung zum löschen einer bestimmten Datei !!!
+					remove("Data/activeProfile.ini");
 
 					Sleep(650);
 
-					readProfilesData.open("profiles.dat");
+					readProfilesData.open("Data/profiles.dat");
 
 					if (!readProfilesData)
 					{
@@ -364,11 +364,11 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 
 					Sleep(1000);
 
-					remove("profiles.dat");									// Anweisung zum löschen einer bestimmten Datei !!!
+					remove("Data/profiles.dat");									// Anweisung zum löschen einer bestimmten Datei !!!
 
 					Sleep(350);
 
-					readProfilesData.open("profiles.dat");
+					readProfilesData.open("Data/profiles.dat");
 
 					if (!readProfilesData)
 					{
@@ -423,7 +423,7 @@ void deleteProfile()												// Funktion für das Löschen des aktuellen Profil
 
 					Sleep(500);
 
-					writeProfilesData.open("profiles.dat");
+					writeProfilesData.open("Data/profiles.dat");
 
 					for (int i = 0; i < profilesData.size(); i++)
 					{
@@ -542,6 +542,5 @@ void profileManagement()
 
 		default: cout << "\n\n\n\t\t\t\t\t\tFALSCHE EINGABE !!!"; Sleep(800);
 		}
-
 	}
 }
