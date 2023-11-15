@@ -45,7 +45,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	{
 		// Build new console title string.
 
-		StringCchPrintf(szNewTitle, MAX_PATH, TEXT("H A N G M A N"), szOldTitle);
+		StringCchPrintf(szNewTitle, MAX_PATH, TEXT("H A N G M A N"));
 
 		// Set console title to new title
 		if (!SetConsoleTitle(szNewTitle))
