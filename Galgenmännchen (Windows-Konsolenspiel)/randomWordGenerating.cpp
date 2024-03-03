@@ -6,11 +6,11 @@
 using namespace std;
 
 
-string randomWordGenerating()													// Funktion zur zufälligen Auswahl eines Wortes aus der Datenbank
+string randomWordGenerating()							// Funktion zur zufälligen Auswahl eines Wortes aus der Datenbank
 {
 	ifstream words("Data/data.dat");
-	unsigned int choice = 0;
-	unsigned int loops = 0;
+	unsigned int choice		= 0;
+	unsigned int loops		= 0;
 	string word;
 	
 	loops = random(11, 59);

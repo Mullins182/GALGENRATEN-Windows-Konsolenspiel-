@@ -17,31 +17,31 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 	set_cursor(false);
 
-	string input = "a";
-	unsigned int won = 0;
-	unsigned int lost = 0;
-	unsigned int profileWon = 0;
-	unsigned int profileLost = 0;
+	vector <string> usedRandomWords{ "XXXXXXXxxxxxxxXXXXXX" };
+	vector <string> profiles{};
+	ofstream writeToProfile;
+	ifstream readProfiles;
+	string activeProfileName;
+	string input				= "a";
+	unsigned int won			= 0;
+	unsigned int lost			= 0;
+	unsigned int profileWon		= 0;
+	unsigned int profileLost	= 0;
 
 	while (input != "\b")
 	{
-		input = "";
-		unsigned int countdown = 11;
-		int posWord = 0;
-		int dummy = 0;
-		ofstream writeToProfile;
-		ifstream readProfiles;
-		vector <string> profiles{};
-		string activeProfileName;
+		input					= "";
+		unsigned int countdown	= 11;
+		int posWord				= 0;
+		int dummy				= 0;
 		string readBuffer;
-		string searchedWord = "TEST";
+		string searchedWord		= "";
 		string foundChars;
-		char charInput = ' ';
+		char charInput			= ' ';
 		string actualWord;
 		string bg_color;
 		string txt_color;
 
-			
 
 		readProfiles.open("Data/profiles.dat");
 
@@ -63,8 +63,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 			profileWon	= stoi(profiles[activeProfile + 1]);
 			profileLost = stoi(profiles[activeProfile + 2]);
 
-		}		
-
+		}
 
 			if (colors == 1)												// Farbgebung !
 			{
@@ -108,9 +107,28 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 			}
 
 			cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t    BITTE WARTEN ...";
+			
+			// Methode zur Verhinderung das das gleiche Wort in einer Spielrunde zwei mal gesucht wird !
+			JumpBack:
 			searchedWord = randomWordGenerating();								// Funktion zur zufälligen Auswahl eines Wortes aus der Wortlistendatei
 
-			for (size_t i = 0; i < searchedWord.size(); i++)
+			for (int i = 0; i < usedRandomWords.size(); i++)
+			{
+				if (usedRandomWords.at(i) == searchedWord)
+				{
+					goto JumpBack;
+				}
+				else
+				{
+
+				}
+			}
+
+			usedRandomWords.push_back(searchedWord);
+
+			// -----------------  ENDE dieser Methode -------------------
+
+			for (int i = 0; i < searchedWord.size(); i++)
 			{
 				actualWord.append("_");
 			}
@@ -185,7 +203,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 
 				//cout << searchedWord << " : " << countdown;
 
-				foundChars = charCheck(searchedWord, charInput);										// Abgleich charInput mit Chars des gesuchten Wortes und Rückgabe Vector <char> mit treffern
+				foundChars = charCheck(searchedWord, charInput);	// Abgleich charInput mit Chars des gesuchten Wortes und Rückgabe String mit treffern
 
 				for (int n = 0; n < foundChars.size(); n++)
 				{
@@ -199,7 +217,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 					}
 				}
 
-				posWord = ((size_t)60 - searchedWord.size());											// Zentrierte Ausgabe der Eingabemaske für gesuchtes Wort !
+				posWord = (60 - searchedWord.size());											// Zentrierte Ausgabe der Eingabemaske für gesuchtes Wort !
 
 				cout << setw(posWord);
 
