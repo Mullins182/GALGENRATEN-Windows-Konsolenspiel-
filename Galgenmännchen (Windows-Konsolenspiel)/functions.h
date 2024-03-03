@@ -13,7 +13,7 @@ void hangman(string, int, bool, bool, bool, bool, size_t);
 /*Game Options*/
 void options();
 /*H I G H S C O R E  Function*/
-void highscore(size_t);
+void highscore(int);
 /*Function for creating and writing values to INI-File*/
 void write_ini_file(int, bool, bool, bool, bool, bool, bool);
 /*Function for choosing a random word from wordlist*/

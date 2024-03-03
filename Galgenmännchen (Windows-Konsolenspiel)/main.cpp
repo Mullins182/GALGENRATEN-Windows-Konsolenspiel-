@@ -11,34 +11,33 @@
 #include<time.h>
 #include<fstream>
 #include"functions.h"
-#pragma comment(lib, "Winmm.lib")				// Für Soundwiedergabe erforderlich !																			
+#pragma comment(lib, "Winmm.lib")									// Für Soundwiedergabe erforderlich !																			
 
 using namespace std;
 
-
-int main()															// Galgenraten (Hangman) Konsolenspiel created by Mullins182 ...
+int main()										// Galgenraten (Hangman) Konsolenspiel created by Mullins182 ...
 {	
 	ifstream read_ini, read_profiles;
 	ofstream write_ini, writeActiveProfile;
-	int colors = 0;
-	bool effects = true;
-	bool snd_effects = true;
-	bool snd_menu = true;
-	bool snd_keys = true;
-	bool snd_winLoose = true;
-	bool menu_music = true;
-	bool musicPlaying = false;
-	string gameVersion = "Version 3.8";
-	size_t activeProfile = 0;
-	string activeProfileName;
-	string readBuffer;
-	string music_set;
-	vector <string> profiles{};
-	char choose = 'x';
+	vector <string>	profiles{};
+	int				colors				= 0;
+	bool			effects				= true;
+	bool			snd_effects			= true;
+	bool			snd_menu			= true;
+	bool			snd_keys			= true;
+	bool			snd_winLoose		= true;
+	bool			menu_music			= true;
+	bool			musicPlaying		= false;
+	string			gameVersion			= "Version 4.0";
+	int				activeProfile		= 0;
+	char			choose				= 'x';
+	string			activeProfileName;
+	string			readBuffer;
+	string			music_set;
 	
 	system("chcp 1252");
 
-	TCHAR szOldTitle[MAX_PATH];																					// Verändern des Konsolenfenster-Titels
+	TCHAR szOldTitle[MAX_PATH];										// Verändern des Konsolenfenster-Titels
 	TCHAR szNewTitle[MAX_PATH];
 
 	// Save current console title.
@@ -59,7 +58,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 		{
 			_tprintf(TEXT("SetConsoleTitle succeeded.\n"));
 		}
-	}																											// Verändern des Konsolenfenster-Titels ENDE !
+	}																// Verändern des Konsolenfenster-Titels ENDE !
 
 	while (choose != 'q')
 	{
@@ -96,7 +95,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 					write_ini.close();
 					read_ini.open("Data/music.ini");
 					read_ini >> music_set;
-					musicPlaying = sndPlaySound(music_set.c_str(), SND_FILENAME | SND_ASYNC | SND_LOOP);							// Hintergrundmusik
+					musicPlaying = sndPlaySound(music_set.c_str(), SND_FILENAME | SND_ASYNC | SND_LOOP);			// Hintergrundmusik
 				}
 				else
 				{
