@@ -32,7 +32,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 	{
 		input					= "";
 		unsigned int countdown	= 11;
-		size_t posWord				= 0;
+		size_t posWord			= 0;
 		int dummy				= 0;
 		string readBuffer;
 		string searchedWord		= "";
@@ -109,8 +109,15 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 			cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t    BITTE WARTEN ...";
 			
 			// Methode zur Verhinderung das das gleiche Wort in einer Spielrunde zweimal gesucht wird !
+
 			JumpBack:
 			searchedWord = randomWordGenerating();								// Funktion zur zufälligen Auswahl eines Wortes aus der Wortlistendatei
+
+			if (usedRandomWords.size() > 400)
+			{
+				usedRandomWords.clear();
+				usedRandomWords.push_back("XXXXXXXxxxxxxxXXXXXX");
+			}
 
 			for (int i = 0; i < usedRandomWords.size(); i++)
 			{
