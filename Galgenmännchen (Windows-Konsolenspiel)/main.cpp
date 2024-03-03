@@ -11,12 +11,11 @@
 #include<time.h>
 #include<fstream>
 #include"functions.h"
-#pragma comment(lib, "Winmm.lib")				// Für Soundwiedergabe erforderlich !																			
+#pragma comment(lib, "Winmm.lib")									// Für Soundwiedergabe erforderlich !																			
 
 using namespace std;
 
-
-int main()															// Galgenraten (Hangman) Konsolenspiel created by Mullins182 ...
+int main()										// Galgenraten (Hangman) Konsolenspiel created by Mullins182 ...
 {	
 	ifstream read_ini, read_profiles;
 	ofstream write_ini, writeActiveProfile;
@@ -38,7 +37,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	
 	system("chcp 1252");
 
-	TCHAR szOldTitle[MAX_PATH];																					// Verändern des Konsolenfenster-Titels
+	TCHAR szOldTitle[MAX_PATH];										// Verändern des Konsolenfenster-Titels
 	TCHAR szNewTitle[MAX_PATH];
 
 	// Save current console title.
@@ -59,7 +58,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 		{
 			_tprintf(TEXT("SetConsoleTitle succeeded.\n"));
 		}
-	}																											// Verändern des Konsolenfenster-Titels ENDE !
+	}																// Verändern des Konsolenfenster-Titels ENDE !
 
 	while (choose != 'q')
 	{
@@ -96,7 +95,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 					write_ini.close();
 					read_ini.open("Data/music.ini");
 					read_ini >> music_set;
-					musicPlaying = sndPlaySound(music_set.c_str(), SND_FILENAME | SND_ASYNC | SND_LOOP);							// Hintergrundmusik
+					musicPlaying = sndPlaySound(music_set.c_str(), SND_FILENAME | SND_ASYNC | SND_LOOP);			// Hintergrundmusik
 				}
 				else
 				{
