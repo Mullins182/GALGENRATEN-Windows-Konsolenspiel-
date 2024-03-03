@@ -19,21 +19,21 @@ int main()										// Galgenraten (Hangman) Konsolenspiel created by Mullins182
 {	
 	ifstream read_ini, read_profiles;
 	ofstream write_ini, writeActiveProfile;
-	int colors = 0;
-	bool effects = true;
-	bool snd_effects = true;
-	bool snd_menu = true;
-	bool snd_keys = true;
-	bool snd_winLoose = true;
-	bool menu_music = true;
-	bool musicPlaying = false;
-	string gameVersion = "Version 3.9";
-	size_t activeProfile = 0;
-	string activeProfileName;
-	string readBuffer;
-	string music_set;
-	vector <string> profiles{};
-	char choose = 'x';
+	vector <string>	profiles{};
+	int				colors				= 0;
+	bool			effects				= true;
+	bool			snd_effects			= true;
+	bool			snd_menu			= true;
+	bool			snd_keys			= true;
+	bool			snd_winLoose		= true;
+	bool			menu_music			= true;
+	bool			musicPlaying		= false;
+	string			gameVersion			= "Version 3.9";
+	int				activeProfile		= 0;
+	char			choose				= 'x';
+	string			activeProfileName;
+	string			readBuffer;
+	string			music_set;
 	
 	system("chcp 1252");
 

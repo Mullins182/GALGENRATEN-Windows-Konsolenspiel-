@@ -15,7 +15,7 @@ uniform_int_distribution<rng_type::result_type> udist(low, high);
 rng_type rng;
 
 // seed rng first:
-rng_type::result_type const seedval = time(0); // get this from somewhere
+rng_type::result_type const seedval = (const unsigned int)time(NULL);	// get this from somewhere
 rng.seed(seedval);
 
 rng_type::result_type random_number = udist(rng);

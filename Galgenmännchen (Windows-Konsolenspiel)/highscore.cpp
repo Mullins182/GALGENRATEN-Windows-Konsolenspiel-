@@ -12,7 +12,7 @@ using namespace std;
 
 
 
-void highscore(size_t profile)
+void highscore(int profile)
 {
 	
 	ifstream readProfiles;
@@ -48,7 +48,7 @@ void highscore(size_t profile)
 		cout << "\t\t\t\t\t\t   H I G H S C O R E\n";
 		cout << setfill('°') << setw(121) << "°\n";
 		
-		for (size_t i = 0; i < profileData.size(); i++)
+		for (int i = 0; i < profileData.size(); i++)
 		{			
 			if (getString == i)
 			{

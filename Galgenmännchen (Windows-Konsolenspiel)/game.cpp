@@ -32,7 +32,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 	{
 		input					= "";
 		unsigned int countdown	= 11;
-		int posWord				= 0;
+		size_t posWord				= 0;
 		int dummy				= 0;
 		string readBuffer;
 		string searchedWord		= "";
@@ -217,7 +217,7 @@ void hangman(string gameVersion, int colors, bool effects, bool snd_effects, boo
 					}
 				}
 
-				posWord = (60 - searchedWord.size());											// Zentrierte Ausgabe der Eingabemaske für gesuchtes Wort !
+				posWord = ((size_t)60 - searchedWord.size());											// Zentrierte Ausgabe der Eingabemaske für gesuchtes Wort !
 
 				cout << setw(posWord);
 
