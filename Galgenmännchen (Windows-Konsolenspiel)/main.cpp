@@ -28,7 +28,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 	bool snd_winLoose = true;
 	bool menu_music = true;
 	bool musicPlaying = false;
-	string gameVersion = "Version 3.8";
+	string gameVersion = "Version 3.9";
 	size_t activeProfile = 0;
 	string activeProfileName;
 	string readBuffer;
