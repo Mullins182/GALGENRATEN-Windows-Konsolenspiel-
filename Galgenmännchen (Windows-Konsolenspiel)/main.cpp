@@ -11,7 +11,7 @@
 #include<time.h>
 #include<fstream>
 #include"functions.h"
-#pragma comment(lib, "Winmm.lib")																				// Für Soundwiedergabe erforderlich !																			
+#pragma comment(lib, "Winmm.lib")				// Für Soundwiedergabe erforderlich !																			
 
 using namespace std;
 
@@ -80,7 +80,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 
 		Sleep(666);
 				
-		set_cursor(false);																						// Maus-Cursor verstecken
+		set_cursor(false);																						// Cursor verstecken
 
 		if (menu_music == true)
 		{			
@@ -137,14 +137,14 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 			system("cls");
 			textColor("black");
 		}						
-		else if (colors == 5)																					// Initialisierung ENDE !!!
+		else if (colors == 5)																					
 		{
 			bgColor("blue");
 			system("cls");
 			textColor("byellow");
-		}
+		}																										// Initialisierung ENDE !!!
 
-		read_profiles.open("Data/profiles.dat");
+		read_profiles.open("Data/profiles.dat");															// Profil-Initialisierung
 
 		if (!read_profiles)
 		{
@@ -159,7 +159,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 			}
 
 			read_profiles.close();
-			read_ini.open("Data/activeProfile.ini");															// Profil-Initialisierung
+			read_ini.open("Data/activeProfile.ini");															
 
 			if (!read_ini)
 			{
@@ -178,7 +178,7 @@ int main()															// Galgenraten (Hangman) Konsolenspiel created by Mulli
 			activeProfileName = profiles[activeProfile];
 		}
 
-		cout << "Profil geladen: " << activeProfileName << "\n";
+		cout << "Profil geladen: " << activeProfileName << "\n";									// Profil Initialisierung ENDE !!!
 
 		mainmenu_art();
 		cout << "\t\t\t\t\t\t\t" << gameVersion << "\n";
